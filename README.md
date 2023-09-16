@@ -2,6 +2,6 @@
   Printf Function 🛰️
 </h1>
 
-## owners:
+## Owners:
 - Mohamed Zayed
 - Ahmed Mohamed

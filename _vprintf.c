@@ -14,7 +14,7 @@
 void _vprintf(char *format, va_list args)
 {
 
-	while (*format != '%' && *format != '\0')
+	while (*format != '\0')
 	{
 		_putchar(*format);
 		format++;
