@@ -48,6 +48,9 @@ void check_format(char c, va_list args)
 	{
 		case ' ':
 			return;
+		case '%':
+			_putchar('%');
+			break;
 		case 'c':
 			_putchar(va_arg(args, int));
 			break;

@@ -12,10 +12,10 @@ void _putstr(char *str)
 {
 	if (str == NULL)
 		_putstr("(null)");
-
-	while (*str)
-	{
-		_putchar(*str);
-		str++;
-	}
+	else
+		while (*str)
+		{
+			_putchar(*str);
+			str++;
+		}
 }
