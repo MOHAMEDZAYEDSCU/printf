@@ -10,8 +10,8 @@
 void _printf(char *format, ...)
 {
 	va_list args;
-	va_start(args, format);
 
+	va_start(args, format);
 	_vprintf(format, args);
 
 	va_end(args);
