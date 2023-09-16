@@ -7,7 +7,7 @@
  *
  * Return: no return for void function.
  */
-void _printf(char *format, ...)
+void _printf(const char *format, ...)
 {
 	va_list args;
 

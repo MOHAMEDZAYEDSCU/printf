@@ -11,7 +11,7 @@
 void _putstr(char *str)
 {
 	if (str == NULL)
-		return (_putstr("(null)"));
+		_putstr("(null)");
 
 	while (*str)
 	{

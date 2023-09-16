@@ -10,7 +10,7 @@ void check_format(char c, va_list args);
 int _putchar(char c);
 void _putint(int n);
 void _putstr(char *str);
-void _printf(char *format, ...);
-void _vprintf(char *format, va_list args);
+void _printf(const char *format, ...);
+void _vprintf(const char *format, va_list args);
 
 #endif

@@ -9,14 +9,14 @@
  */
 void _putint(int n)
 {
+	char buffer[12];
+	int i = 0, j;
+
 	if (n < 0)
 	{
 		_putchar('-');
 		n = -n;
 	}
-
-	char buffer[12];
-	int i = 0;
 
 	if (n == 0)
 	{
@@ -30,7 +30,7 @@ void _putint(int n)
 		n /= 10;
 	}
 
-	for (int j = i - 1; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		_putchar(buffer[j]);
 	}

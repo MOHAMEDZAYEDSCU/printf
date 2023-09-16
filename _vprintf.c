@@ -11,7 +11,7 @@
  *
  * Return: no return for void function.
  */
-void _vprintf(char *format, va_list args)
+void _vprintf(const char *format, va_list args)
 {
 	while (*format)
 	{
