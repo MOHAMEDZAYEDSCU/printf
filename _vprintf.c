@@ -18,6 +18,10 @@ void _vprintf(char *format, va_list args)
 		if (*format == '%')
 		{
 			format++;
+
+			if (*format == '\0')
+				return;
+
 			check_format(*format, args);
 		}
 		else
@@ -42,10 +46,13 @@ void check_format(char c, va_list args)
 {
 	switch (c)
 	{
+		case ' ':
+			return;
 		case 'c':
 			_putchar(va_arg(args, int));
 			break;
 		case 'i':
+		case 'd':
 			_putint(va_arg(args, int));
 			break;
 		case 's':

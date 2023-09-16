@@ -12,6 +12,9 @@ void _printf(char *format, ...)
 	va_list args;
 
 	va_start(args, format);
+	if (format == NULL)
+		return;
+
 	_vprintf(format, args);
 
 	va_end(args);
