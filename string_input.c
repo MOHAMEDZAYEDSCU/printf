@@ -17,7 +17,7 @@ int _putstr(char *str)
 	else
 		while (*str)
 		{
-			putchar(*str);
+			_putchar(*str);
 			str++;
 			char_count++;
 		}
