@@ -2,19 +2,20 @@
 #include <unistd.h>
 
 /**
- * print_number - Print an integer
- * @n: The integer to print
+ * print_integer - Print an integer
+ * @num: The integer to print
  */
-void print_number(int n)
+void print_integer(int num)
 {
-    if (n < 0)
+    int count = 0;
+    char buffer[12]; 
+
+    if (num < 0)
     {
-        _putchar('-');
-        n = -n;
+        count += _putchar('-');
+        num = -num;
     }
 
-    if (n / 10)
-        print_number(n / 10);
-
-    _putchar(n % 10 + '0');
+    snprintf(buffer, sizeof(buffer), "%d", num);
+    count += string_print(buffer);
 }
