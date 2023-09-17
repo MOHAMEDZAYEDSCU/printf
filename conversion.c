@@ -26,5 +26,11 @@ int conv(va_list list, const char *format)
     {
         count += _putchar('%');
     }
+    else if (*format == 'd' || *format == 'i')
+    {
+        int num = va_arg(list, int);
+        print_number(num);
+        count += string_print(NULL); 
+    }
     return (count);
 }
