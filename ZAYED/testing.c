@@ -9,6 +9,7 @@ int main(void)
 {
 int len;
 int len2;
+int x;
 
 len = _printf("Let's try to printf a simple sentence.\n");
 len2 = printf("Let's try to printf a simple sentence.\n");
@@ -21,7 +22,8 @@ printf("Negative:[%d]\n", -762534);
 
 _printf("Character:[%c]\n", 'H');
 printf("Character:[%c]\n", 'H');
-_printf("character [%c]\n", 65);
+x = _printf("[%c]\n", 65);
+_printf("%  d\n",x);
 
 _printf("String:[%s]\n", "I am a string !");
 printf("String:[%s]\n", "I am a string !");
@@ -37,9 +39,15 @@ _printf("Unknown:[%r]\n");
 printf("Unknown:[%r]\n");
 
 _printf("\n");
-_printf("%s\n", NULL);
-_printf("% s\n","moahmed");
 
+x = _printf("%s\n", NULL);
+_printf("%  d\n", x);
+
+x = _printf("%s\n","mohamed");
+_printf("%d\n", x);
+printf("%d\n",x);
+
+_printf("%\n");
+printf("%\n");
 return (0);
 }
-

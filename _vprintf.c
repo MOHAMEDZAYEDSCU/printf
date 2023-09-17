@@ -15,14 +15,17 @@ int _vprintf(const char *format, va_list args)
 {
 	int count1 = 0, count2 = 0;
 
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
 
-			if (*format == '\0' || *format == ' ')
-				return (-1);
+			while (*format == ' ')
+				format++;
+
+			if (*format == '\0')
+				return (count1 + count2);
 
 			count2 += check_format(*format, args);
 		}
@@ -58,7 +61,7 @@ int check_format(char c, va_list args)
 			return (0);
 		case 'c':
 			_putchar(va_arg(args, int));
-			return (1);
+			return (0);
 		case 'i':
 		case 'd':
 			_putint(va_arg(args, int));

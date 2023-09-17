@@ -13,7 +13,10 @@ int _putstr(char *str)
 	int char_count = 0;
 
 	if (str == NULL)
+	{
 		_putstr("(null)");
+		char_count += 5;
+	}
 	else
 		while (*str)
 		{
