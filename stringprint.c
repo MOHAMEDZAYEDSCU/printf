@@ -11,24 +11,10 @@ int string_print(const char *s)
 {
     int count = 0;
 
-    if (s == NULL)
+    while (*s)
     {
-        const char *null_message = "(null)";
-        while (*null_message)
-        {
-            count += putchar(*null_message);
-            null_message++;
-        }
+        count += putchar(*s);
+        s++;
     }
-    else
-    {
-        while (*s)
-        {
-            count += putchar(*s);
-            s++;
-        }
-    }
-
-    return count;
+    return (count);
 }
-
