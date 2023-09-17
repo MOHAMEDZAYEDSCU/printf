@@ -14,13 +14,13 @@ void _putint(int n)
 
 	if (n < 0)
 	{
-		_putchar('-');
+		putchar('-');
 		n = -n;
 	}
 
 	if (n == 0)
 	{
-		_putchar('0');
+		putchar('0');
 		return;
 	}
 
@@ -32,6 +32,6 @@ void _putint(int n)
 
 	for (j = i - 1; j >= 0; j--)
 	{
-		_putchar(buffer[j]);
+		putchar(buffer[j]);
 	}
 }
