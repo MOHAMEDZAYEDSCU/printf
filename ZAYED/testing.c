@@ -38,6 +38,7 @@ printf("Unknown:[%r]\n");
 
 _printf("\n");
 _printf("%s\n", NULL);
+_printf("% s\n","moahmed");
 
 return (0);
 }
