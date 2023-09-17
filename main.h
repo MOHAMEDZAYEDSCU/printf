@@ -7,6 +7,7 @@
 #include <string.h>
 
 int check_format(char c, va_list args);
+int _putchar(char c);
 void _putint(int n);
 int _putstr(char *str);
 int _printf(const char *format, ...);

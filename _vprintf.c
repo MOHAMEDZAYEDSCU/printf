@@ -27,7 +27,7 @@ int _vprintf(const char *format, va_list args)
 			count2 += check_format(*format, args);
 		}
 		else
-			putchar(*format);
+			_putchar(*format);
 
 		format++;
 		count1++;
@@ -54,10 +54,10 @@ int check_format(char c, va_list args)
 	switch (c)
 	{
 		case '%':
-			putchar('%');
+			_putchar('%');
 			return (0);
 		case 'c':
-			putchar(va_arg(args, int));
+			_putchar(va_arg(args, int));
 			return (1);
 		case 'i':
 		case 'd':
@@ -67,8 +67,8 @@ int check_format(char c, va_list args)
 			i = _putstr(va_arg(args, char*));
 			return (i);
 		default:
-			putchar('%');
-			putchar(c);
+			_putchar('%');
+			_putchar(c);
 			return (1);
 	}
 }
