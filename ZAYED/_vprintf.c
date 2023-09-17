@@ -72,6 +72,6 @@ int check_format(char c, va_list args)
 		default:
 			_putchar('%');
 			_putchar(c);
-			return (2);
+			return (1);
 	}
 }
