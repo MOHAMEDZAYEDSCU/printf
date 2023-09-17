@@ -11,24 +11,28 @@
  *
  * Return: no return for void function.
  */
-void _vprintf(const char *format, va_list args)
+int _vprintf(const char *format, va_list args)
 {
+	int count1 = 0, count2 = 0;
+
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
 
-			if (*format == '\0')
-				return;
+			if (*format == '\0' || *format == ' ')
+				return (-1);
 
-			check_format(*format, args);
+			count2 += check_format(*format, args);
 		}
 		else
 			_putchar(*format);
 
 		format++;
+		count1++;
 	}
+	return (count1 + count2);
 }
 
 
@@ -42,28 +46,28 @@ void _vprintf(const char *format, va_list args)
  * @args: list of arguments
  * Return: no return for void function
  */
-void check_format(char c, va_list args)
+int check_format(char c, va_list args)
 {
+	int i = 0;
+
 	switch (c)
 	{
-		case ' ':
-			return;
 		case '%':
 			_putchar('%');
-			break;
+			return (0);
 		case 'c':
 			_putchar(va_arg(args, int));
-			break;
+			return (1);
 		case 'i':
 		case 'd':
 			_putint(va_arg(args, int));
-			break;
+			return (i);
 		case 's':
-			_putstr(va_arg(args, char*));
-			break;
+			i = _putstr(va_arg(args, char*));
+			return (i);
 		default:
 			_putchar('%');
 			_putchar(c);
-			break;
+			return (1);
 	}
 }

@@ -5,18 +5,21 @@
  *
  * @format: a pointer to the format and text
  *
- * Return: no return for void function.
+ * Return: 0 in successful
+ *		-1 in failure.
  */
-void _printf(const char *format, ...)
+int _printf(const char *format, ...)
 {
+	int i = 0;
 	va_list args;
 
 	va_start(args, format);
 
 	if (format == NULL)
-		return;
+		return (-1);
 
-	_vprintf(format, args);
+	i = _vprintf(format, args);
 
 	va_end(args);
+	return (i);
 }

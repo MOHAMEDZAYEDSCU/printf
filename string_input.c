@@ -8,8 +8,10 @@
  * Return:no return for void function.
  */
 
-void _putstr(char *str)
+int _putstr(char *str)
 {
+	int char_count = 0;
+
 	if (str == NULL)
 		_putstr("(null)");
 	else
@@ -17,5 +19,8 @@ void _putstr(char *str)
 		{
 			_putchar(*str);
 			str++;
+			char_count++;
 		}
+
+	return (char_count);
 }
