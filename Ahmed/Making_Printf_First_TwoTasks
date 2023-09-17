@@ -40,9 +40,43 @@ int _printf(const char *format, ...)
                 write(1, num_str, len);
                 count += len;
             }
-            else
+            else if (*ptr == 'b')
             {
-                //For Advanced Tasks.
+                unsigned int num = va_arg(args, unsigned int);
+                char binary_str[33];  
+                for (int i = 31; i >= 0; i--)
+                {
+                    binary_str[31 - i] = ((num >> i) & 1) ? '1' : '0';
+                }
+                binary_str[32] = '\0';
+                write(1, binary_str, 32);
+                count += 32;
+            }
+            else if (*ptr == 'u') {
+            unsigned int num = va_arg(args, unsigned int);
+            char num_str[20]; 
+            int len = sprintf(num_str, "%u", num);
+            write(1, num_str, len);
+            count += len;
+            }
+             else if (*ptr == 'o') {
+            unsigned int num = va_arg(args, unsigned int);
+            char num_str[20];  
+            int len = sprintf(num_str, "%o", num);  
+            write(1, num_str, len);
+            count += len;
+            } 
+            else if (*ptr == 'x' || *ptr == 'X') {
+            unsigned int num = va_arg(args, unsigned int);
+            char num_str[20];  
+            int len;
+            if (*ptr == 'x') {
+                len = sprintf(num_str, "%x", num);  
+            } else {
+                len = sprintf(num_str, "%X", num);  
+            }
+            write(1, num_str, len);
+            count += len;
             }
         }
         else
