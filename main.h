@@ -11,6 +11,5 @@ int _putchar(char c);
 int string_print(const char *s);
 int char_print(char c);
 int conv(va_list list, const char *format);
-void print_integer(int n);
 
 #endif
