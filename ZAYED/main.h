@@ -6,10 +6,11 @@
 #include <limits.h>
 #include <string.h>
 
+int check_format(char c, va_list args);
 int _putchar(char c);
-int print_string(char *str);
-int print_number(int num);
-int print_format(const char *format, va_list args);
+void _putint(int n);
+int _putstr(char *str);
 int _printf(const char *format, ...);
+int _vprintf(const char *format, va_list args);
 
 #endif
