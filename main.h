@@ -1,16 +1,16 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdarg.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include <limits.h>
 #include <string.h>
-#include <unistd.h>
 
-int _printf(const char *format, ...);
+int check_format(char c, va_list args);
 int _putchar(char c);
-int string_print(const char *s);
-int char_print(char c);
-int conv(va_list list, const char *format);
+void _putint(int n);
+int _putstr(char *str);
+int _printf(const char *format, ...);
+int _vprintf(const char *format, va_list args);
 
 #endif

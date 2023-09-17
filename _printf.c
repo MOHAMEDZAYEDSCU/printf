@@ -1,34 +1,25 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
- * _printf - Custom printf function
- * @format: Format string
+ * _printf - clone version of printf
  *
- * Return: Number of characters printed (excluding the null byte)
+ * @format: a pointer to the format and text
+ *
+ * Return: 0 in successful
+ *		-1 in failure.
  */
 int _printf(const char *format, ...)
 {
-    int count = 0;
-    va_list arg;
+	int i = 0;
+	va_list args;
 
-    va_start(arg, format);
-    if (format == NULL)
-        return (-1);
+	va_start(args, format);
 
-    while (*format)
-    {
-        if (*format == '%')
-        {
-            format++;
-            count += conv(arg, format);
-        }
-        else
-        {
-            count += _putchar(*format);
-        }
-        format++;
-    }
-    va_end(arg);
-    return (count);
+	if (format == NULL)
+		return (-1);
+
+	i = _vprintf(format, args);
+
+	va_end(args);
+	return (i);
 }
