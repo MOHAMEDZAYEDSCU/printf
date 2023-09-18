@@ -4,26 +4,21 @@
  * _putstr - for print strings
  *
  * @str: a pointer to a string
+ * @count: pointer to the counter
  *
  * Return:no return for void function.
  */
 
-int _putstr(char *str)
+void _putstr(char *str, int *count)
 {
-	int char_count = 0;
-
 	if (str == NULL)
-	{
-		_putstr("(null)");
-		char_count += 6;
-	}
+		_putstr("(null)", count);
+
 	else
 		while (*str)
 		{
 			_putchar(*str);
 			str++;
-			char_count++;
+			(*count)++;
 		}
-
-	return (char_count);
 }

@@ -8,13 +8,12 @@
  *
  * @format: a pointer to the text and format
  * @args: the arguments list
+ * @counter: a pointer to the counter.
  *
  * Return: no return for void function.
  */
-int _vprintf(const char *format, va_list args)
+void _vprintf(const char *format, va_list args, int *counter)
 {
-	int count1 = 0, count2 = 0;
-
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -25,17 +24,17 @@ int _vprintf(const char *format, va_list args)
 				format++;
 
 			if (*format == '\0')
-				return (count1 + count2);
+				return;
 
-			count2 += check_format(*format, args);
+			check_format(*format, args, counter);
 		}
 		else
 			_putchar(*format);
 
 		format++;
-		count1++;
+		(*counter)++;
 	}
-	return (count1 + count2);
+	return;
 }
 
 
@@ -47,31 +46,33 @@ int _vprintf(const char *format, va_list args)
  *
  * @c: character to the datatype
  * @args: list of arguments
+ * @counter: pointer to the counter
  *
  * Return: no return for void function
  */
-int check_format(char c, va_list args)
+void check_format(char c, va_list args, int *counter)
 {
-	int i = 0;
-
 	switch (c)
 	{
 		case '%':
 			_putchar('%');
-			return (0);
+			break;
 		case 'c':
 			_putchar(va_arg(args, int));
-			return (0);
+			break;
 		case 'i':
 		case 'd':
 			_putint(va_arg(args, int));
-			return (i);
+			break;
 		case 's':
-			i = _putstr(va_arg(args, char*));
-			return (i);
+			_putstr(va_arg(args, char*), counter);
+			break;
+
 		default:
-			_putchar('%');
-			_putchar(c);
-			return (1);
+			{
+				_putchar('%');
+				_putchar(c);
+				(*counter) += 1;
+			}
 	}
 }
