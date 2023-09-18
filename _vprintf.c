@@ -1,4 +1,6 @@
 #include "main.h"
+#include <unistd.h>
+#include <stdarg.h>
 
 /**
  * vprintf - Prints formatted data to the standard output
@@ -7,34 +9,34 @@
  *
  * Return: The length of the formatted output
  */
-int _vprintf(const char *format, va_list args)
+int vprintf(const char *format, va_list args)
 {
-	int len = 0;
-	int i = 0;
-	char next;
-	char current;
+    int len = 0;
+    int i = 0;
+    char next;
+    char current;
 
-	while (format[i])
-	{
-		current = format[i];
-		next = format[i + 1];
+    while (format[i])
+    {
+        current = format[i];
+        next = format[i + 1];
 
-		switch (current)
-		{
-			case '%':
-				i++;
-				len += check_format(next, args);
-				break;
+        switch (current)
+        {
+            case '%':
+                i++;
+                len += check_format(next, args);
+                break;
 
-			default:
-				len += _putchar(current);
-				break;
-		}
+            default:
+                len += _putchar(current);
+                break;
+        }
 
-		i++;
-	}
+        i++;
+    }
 
-	return (len);
+    return len;
 }
 
 /**
@@ -46,25 +48,25 @@ int _vprintf(const char *format, va_list args)
  */
 int check_format(char specifier, va_list args)
 {
-	switch (specifier)
-	{
-		case 'c':
-			return (_putchar((char)va_arg(args, int)));
+    switch (specifier)
+    {
+        case 'c':
+            return _putchar((char)va_arg(args, int));
 
-		case 's':
-			return (_putstr(va_arg(args, char *)));
+        case 's':
+            return _putstr(va_arg(args, char *));
 
-		case '%':
-			return (_putchar('%'));
+        case '%':
+            return _putchar('%');
 
-		case 'd':
-		case 'i':
-			return (_putint(va_arg(args, int)));
+        case 'd':
+        case 'i':
+            return _putint(va_arg(args, int));
 
-		case 'b':
-			return (putbin(va_arg(args, unsigned int)));
+        case 'b':
+            return putbin(va_arg(args, unsigned int));
 
-		default:
-			return (_putchar('%') + _putchar(specifier));
-	}
+        default:
+            return _putchar('%') + _putchar(specifier);
+    }
 }
