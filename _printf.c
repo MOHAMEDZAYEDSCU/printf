@@ -12,10 +12,6 @@ int _printf(const char *format, ...)
     va_list args;
     int length = 0;
     const char *ptr;
-
-    if (format == NULL || (format[0] == '%' && !format[1]) ||
-                        (format[0] == '%' && format[1] == ' ' && !format[2]))
-                return (-1);
     
     va_start(args, format);
 
