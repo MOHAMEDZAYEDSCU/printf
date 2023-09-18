@@ -17,5 +17,6 @@ int putbin(unsigned int n);
 int _printf(const char *format, ...);
 int _vprintf(const char *format, va_list args);
 int putstring_hexascii(char *str);
+int putpointer_address(void *ptr);
 
 #endif

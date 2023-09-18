@@ -80,6 +80,9 @@ int check_format(char specifier, va_list args)
 	
 	case 'S':
             return putstring_hexascii(va_arg(args, char *));
+	
+	case 'p':
+            return putpointer_address(va_arg(args, void *));
 
         default:
             return _putchar('%') + _putchar(specifier);

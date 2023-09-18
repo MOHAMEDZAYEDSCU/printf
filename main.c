@@ -9,6 +9,7 @@
  */
 int main(void)
 {
-    _printf("%S\n", "Best\nSchool");
+    void *addr = (void *)0x7ffe637541f0;
+    _printf("%p", addr); 
     return (0);
 }
