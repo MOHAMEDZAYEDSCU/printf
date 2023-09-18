@@ -10,6 +10,9 @@ int putunsigned(unsigned int n)
 {
     int count = 0;
     int digit;
+    int digits[32];  
+    int i = 0;
+    int j; 
 
     if (n == 0)
     {
@@ -20,11 +23,17 @@ int putunsigned(unsigned int n)
     while (n > 0)
     {
         digit = n % 10;
-        _putchar('0' + digit);
+        digits[i] = digit;
         n = n / 10;
+        i++;
+    }
+
+    for (j = i - 1; j >= 0; j--)  
+    {
+        _putchar('0' + digits[j]);
         count++;
     }
-    return (count);
+    return count;
 }
 
 /**
@@ -37,7 +46,9 @@ int putoctal(unsigned int n)
 {
     int count = 0;
     int octal_digits[32];
-    int i;
+    int i = 0;
+    int j;  
+    int leading_zero;
 
     if (n == 0)
     {
@@ -45,19 +56,29 @@ int putoctal(unsigned int n)
         return 1;
     }
 
-    for (i = 0; i < 32; i++)
+    while (n > 0)
     {
         octal_digits[i] = n % 8;
         n = n / 8;
+        i++;
     }
 
-    for (i = 31; i >= 0; i--)
+    leading_zero = 1;  
+    for (j = i - 1; j >= 0; j--)  
     {
-        _putchar('0' + octal_digits[i]);
-        count++;
+        if (octal_digits[j] != 0)
+            leading_zero = 0;
+
+        if (!leading_zero)
+        {
+            _putchar('0' + octal_digits[j]);
+            count++;
+        }
     }
     return (count);
 }
+
+
 
 /**
  * puthex - Prints an unsigned int in hexadecimal
@@ -93,7 +114,7 @@ int puthex(unsigned int n, int uppercase)
     {
         hex_str[i] = hex_chars[n % 16];
         n = n / 16;
-    }
+     }
 
     for (i = i - 1; i >= 0; i--)
     {
