@@ -9,9 +9,6 @@
  */
 int main(void)
 {
-   _printf("Let's print a simple sentence."); 
-    _printf("%s", "I am a string !");
-    _printf("%c", 'S'); 
-    _printf("%%"); 
+   _printf("%b", 98);
     return (0);
 }
