@@ -15,7 +15,7 @@ int _putstr(char *str)
 	if (str == NULL)
 	{
 		_putstr("(null)");
-		char_count += 5;
+		char_count += 6;
 	}
 	else
 		while (*str)
