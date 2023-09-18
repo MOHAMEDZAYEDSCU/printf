@@ -1,29 +1,35 @@
 #include "main.h"
+
 /**
- * printBinary - changes an int to decimal
- * @num: the int
- * @length: the length
- *
- * Return: thr length
- */
-int putbin(int num, int length)
+* putbin - converts a dec to binary
+* @n: the number bassed to us
+*
+* Description : does stuff. uses recursion
+* Return: recursion
+*/
+
+
+int putbin(int n)
 {
-	int x, a;
+	int temp = n;
+	int count = 0;
+	int i;
+	int count2 = 0;
 
-	if (num != 1)
+	while (temp > 0)
 	{
-		x = (num % 2) == 0 ? num / 2 : (num - 1) / 2;
-		length = putbin(x, ++length);
+		temp /= 2;
+		count++;
+		count2++;
 	}
+	for (count -= 1; count >= 0; count--)
+	{
+		i = n >> count;
 
-	if (num == 1)
-	{
-		_putchar(num + '0');
-		++length;
-	} else
-	{
-		a = num - (2 * x);
-		_putchar(a + '0');
+		if (i & 1)
+			_putchar('1');
+		else
+			_putchar('0');
 	}
-	return (length);
+	return (count2);
 }
