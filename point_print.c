@@ -6,7 +6,8 @@
  *
  * Description:
  * This function takes a pointer and prints its address in hexadecimal format.
- * It uses the sprintf function to format the address and prints it using _putstr.
+ * It uses the sprintf function to format the address
+ * and prints it using _putstr.
  *
  * Return:
  * The number of characters printed.
@@ -14,7 +15,10 @@
 int putpointer_address(void *ptr)
 {
 
-    char hex[17];
-    sprintf(hex, "%p", ptr);
-    return _putstr(hex);
+	char hex[17];
+
+	sprintf(hex, "%p", ptr);
+
+	return (_putstr(hex));
+
 }

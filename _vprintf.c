@@ -1,9 +1,8 @@
 #include "main.h"
-#include <unistd.h>
-#include <stdarg.h>
 
 /**
  * vprintf - Prints formatted data to the standard output
+ *
  * @format: The format string containing the types and characters to print
  * @args: The list of arguments to be formatted and printed
  *

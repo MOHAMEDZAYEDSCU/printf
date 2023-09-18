@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <limits.h>
 #include <string.h>
+#include <unistd.h>
 
 int check_format(char c, va_list args);
 int _putchar(char c);
