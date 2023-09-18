@@ -1,77 +1,67 @@
 #include "main.h"
 
 /**
- * _vprintf - clone version of vprintf
+ * vprintf - Prints formatted data to the standard output
+ * @format: The format string containing the types and characters to print
+ * @args: The list of arguments to be formatted and printed
  *
- * Description: This function print any text without arguments and pass
- *		the arguments if found
- *
- * @format: a pointer to the text and format
- * @args: the arguments list
- *
- * Return: no return for void function.
+ * Return: The length of the formatted output
  */
 int _vprintf(const char *format, va_list args)
 {
-	int count1 = 0, count2 = 0;
+	int len = 0;
+	int i = 0;
+	char next;
+	char current;
 
-	while (*format != '\0')
+	while (format[i])
 	{
-		if (*format == '%')
+		current = format[i];
+		next = format[i + 1];
+
+		switch (current)
 		{
-			format++;
+			case '%':
+				i++;
+				len += check_format(next, args);
+				break;
 
-			while (*format == ' ')
-				format++;
-
-			if (*format == '\0')
-				return (count1 + count2);
-
-			count2 += check_format(*format, args);
+			default:
+				len += _putchar(current);
+				break;
 		}
-		else
-			_putchar(*format);
 
-		format++;
-		count1++;
+		i++;
 	}
-	return (count1 + count2);
+
+	return (len);
 }
 
-
 /**
- * check_format - for checking format
+ * check_format - Checks the format specifier and performs appropriate action
+ * @specifier: The format specifier character
+ * @args: The list of arguments to be formatted and printed
  *
- * Description: this function check the format and choose the
- *		correct data type
- *
- * @c: character to the datatype
- * @args: list of arguments
- *
- * Return: no return for void function
+ * Return: The length of the formatted output
  */
-int check_format(char c, va_list args)
+int check_format(char specifier, va_list args)
 {
-	int i = 0;
-
-	switch (c)
+	switch (specifier)
 	{
-		case '%':
-			_putchar('%');
-			return (0);
 		case 'c':
-			_putchar(va_arg(args, int));
-			return (0);
-		case 'i':
-		case 'd':
-			_putint(va_arg(args, int));
-			return (i);
+			return (_putchar((char)va_arg(args, int)));
+
 		case 's':
-			i = _putstr(va_arg(args, char*));
-			return (i);
+			return (_putstr(va_arg(args, char *)));
+
+		case '%':
+			return (_putchar('%'));
+
+		case 'd':
+		case 'i':
+			return (_putint(va_arg(args, int)));
+
 		default:
-			_putchar('%');
-			_putchar(c);
-			return (1);
+			return (_putchar('%') + _putchar(specifier));
 	}
 }
