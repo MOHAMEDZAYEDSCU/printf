@@ -1,7 +1,8 @@
 <h1 align=center>
-  printf function :satellite:
+  Printf Function 🛰️
 </h1>
 
-##Owners:
--Mohamed Zayed
--Ahmed Mohamed
+# Owners:
+
+- Mohamed Zayed
+- Ahmed Mohamed
