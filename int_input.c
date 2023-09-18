@@ -14,7 +14,7 @@ int _putint(int num)
 	if (!abs_num)
 	{
 		_putchar('0' + 0);
-		return 1;
+		return (1);
 	}
 
 	if (num < 0)
