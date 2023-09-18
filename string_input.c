@@ -8,22 +8,15 @@
  * Return:no return for void function.
  */
 
-int _putstr(char *str)
+int _putstr(char *s)
 {
-	int char_count = 0;
+	int i = 0;
 
-	if (str == NULL)
+	while (*s != '\0')
 	{
-		_putstr("(null)");
-		char_count += 6;
+		_putchar(*s);
+		s++;
+		i++;
 	}
-	else
-		while (*str)
-		{
-			_putchar(*str);
-			str++;
-			char_count++;
-		}
-
-	return (char_count);
+	return (i);
 }
