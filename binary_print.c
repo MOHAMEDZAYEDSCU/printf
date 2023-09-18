@@ -1,35 +1,35 @@
 #include "main.h"
 
 /**
-* putbin - converts a dec to binary
-* @n: the number bassed to us
-*
-* Description : does stuff. uses recursion
-* Return: recursion
-*/
-
-
-int putbin(int n)
+ * putbin - Prints an unsigned int in binary
+ * @n: The unsigned int to print in binary
+ *
+ * Return: The length of the binary representation
+ */
+int putbin(unsigned int n)
 {
-	int temp = n;
-	int count = 0;
-	int i;
-	int count2 = 0;
+    int count = 0;
+    int binary_digits[32];
+    int i = 0;
 
-	while (temp > 0)
-	{
-		temp /= 2;
-		count++;
-		count2++;
-	}
-	for (count -= 1; count >= 0; count--)
-	{
-		i = n >> count;
+    if (n == 0)
+    {
+        _putchar('0');
+        return 1;
+    }
 
-		if (i & 1)
-			_putchar('1');
-		else
-			_putchar('0');
-	}
-	return (count2);
+    while (n > 0)
+    {
+        binary_digits[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+
+    for (int j = i - 1; j >= 0; j--)
+    {
+        _putchar('0' + binary_digits[j]);
+        count++;
+    }
+
+    return (count);
 }
