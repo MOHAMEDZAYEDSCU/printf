@@ -6,7 +6,7 @@
  *
  * Return: The length of the decimal representation
  */
-int putunsigned(unsigned int n)
+int put_unsign(unsigned int n)
 {
     int count = 0;
     int digit;
