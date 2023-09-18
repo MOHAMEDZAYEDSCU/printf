@@ -1,38 +1,39 @@
 #include "main.h"
 
 /**
- * _putint - prints an integer on the standard output
- * @n: integer to print
- * Return: the length of numbers passed
+ * print_integer - Prints an integer to the standard output
+ * @num: The integer to print
+ *
+ * Return: The number of digits in the integer
  */
 
-int _putint(int n)
+int _putint(int num)
 {
-	unsigned int num = n;
-	int len = 0;
+	unsigned int abs_num = (unsigned int)num;
+	int digit_count = 0;
 
-	if (!num)
+	if (!abs_num)
 	{
 		_putchar('0' + 0);
-		return (1);
+		return 1;
 	}
 
-	if (n < 0)
+	if (num < 0)
 	{
-		len += _putchar('-');
-		num = -n;
+		digit_count += _putchar('-');
+		abs_num = (unsigned int)(-num);
 	}
 
-	if ((num / 10) > 0)
+	if ((abs_num / 10) > 0)
 	{
-		_putint((num / 10));
+		print_integer((int)(abs_num / 10));
 	}
-	_putchar('0' + (num % 10));
+	_putchar('0' + (abs_num % 10));
 
-	while (n != 0)
+	while (num != 0)
 	{
-		n /= 10;
-		len++;
+		num /= 10;
+		digit_count++;
 	}
-	return (len);
+	return (digit_count);
 }
