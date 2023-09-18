@@ -66,6 +66,18 @@ int check_format(char specifier, va_list args)
         case 'b':
             return putbin(va_arg(args, unsigned int));
 
+        case 'u':
+            return putunsigned(va_arg(args, unsigned int));
+
+        case 'o':
+            return putoctal(va_arg(args, unsigned int));
+
+        case 'x':
+            return puthex(va_arg(args, unsigned int), 0);
+
+        case 'X':
+            return puthex(va_arg(args, unsigned int), 1);
+
         default:
             return _putchar('%') + _putchar(specifier);
     }
