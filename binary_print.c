@@ -1,23 +1,29 @@
 #include "main.h"
-#include <unistd.h>
-
 /**
- * putbin - Prints an unsigned int in binary
- * @n: The unsigned int to print in binary
+ * printBinary - changes an int to decimal
+ * @num: the int
+ * @length: the length
  *
- * Return: The length of the binary representation
+ * Return: thr length
  */
-int putbin(unsigned int n)
+int putbin(int num, int length)
 {
-    int len;
+	int x, a;
 
-    if (n <= 1)
-    {
-        _putchar('0' + n);
-        return 1;
-    }
+	if (num != 1)
+	{
+		x = (num % 2) == 0 ? num / 2 : (num - 1) / 2;
+		length = putbin(x, ++length);
+	}
 
-    len = putbin(n / 2);
-    _putchar('0' + (n % 2));
-    return (len + 1);
+	if (num == 1)
+	{
+		_putchar(num + '0');
+		++length;
+	} else
+	{
+		a = num - (2 * x);
+		_putchar(a + '0');
+	}
+	return (length);
 }

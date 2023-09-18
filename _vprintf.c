@@ -62,7 +62,7 @@ int check_format(char specifier, va_list args)
 			return (_putint(va_arg(args, int)));
 
 		case 'b':
-			return putbin(va_arg(args, unsigned int));
+			return (putbin(va_arg(args, int),0));
 
 		default:
 			return (_putchar('%') + _putchar(specifier));
