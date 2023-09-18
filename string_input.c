@@ -2,7 +2,8 @@
 
 /**
  * _putstr - Prints a string to the standard output
- * @str: The string to print
+ *
+ * @string: The string to print
  *
  * Return: The length of the string
  */
@@ -22,5 +23,5 @@ int _putstr(char *string)
 		current_char++;
 	}
 
-	return length;
+	return (length);
 }
