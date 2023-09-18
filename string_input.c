@@ -1,22 +1,22 @@
 #include "main.h"
+#include <unistd.h>
 
 /**
- * _putstr - for print strings
- *
- * @str: a pointer to a string
- *
- * Return:no return for void function.
+ * _puts - prints a string on the standard output
+ * @str: string to print
+ * Return: The length of the string
  */
 
-int _putstr(char *s)
+int _putstr(char *str)
 {
+	char *s = str;
 	int i = 0;
 
-	while (*s != '\0')
-	{
-		_putchar(*s);
-		s++;
-		i++;
-	}
+	if (!s)
+		s = "(null)";
+
+	while (s[i])
+		_putchar(s[i++]);
+
 	return (i);
 }

@@ -1,37 +1,38 @@
 #include "main.h"
 
 /**
- * _putint - to print integers
- *
- * @n: the number needed to be printed
- *
- * Return: no return for void function
+ * _putint - prints an integer on the standard output
+ * @n: integer to print
+ * Return: the length of numbers passed
  */
-void _putint(int n)
+
+int _putint(int n)
 {
-	char buffer[12];
-	int i = 0, j;
+	unsigned int num = n;
+	int len = 0;
+
+	if (!num)
+	{
+		_putchar('0' + 0);
+		return (1);
+	}
 
 	if (n < 0)
 	{
-		_putchar('-');
-		n = -n;
+		len += _putchar('-');
+		num = -n;
 	}
 
-	if (n == 0)
+	if ((num / 10) > 0)
 	{
-		_putchar('0');
-		return;
+		_putint((num / 10));
 	}
+	_putchar('0' + (num % 10));
 
-	while (n > 0)
+	while (n != 0)
 	{
-		buffer[i++] = '0' + (n % 10);
 		n /= 10;
+		len++;
 	}
-
-	for (j = i - 1; j >= 0; j--)
-	{
-		_putchar(buffer[j]);
-	}
+	return (len);
 }
