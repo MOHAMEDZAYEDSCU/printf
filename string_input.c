@@ -1,22 +1,26 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
- * _puts - prints a string on the standard output
- * @str: string to print
+ * _putstr - Prints a string to the standard output
+ * @str: The string to print
+ *
  * Return: The length of the string
  */
 
-int _putstr(char *str)
+int _putstr(char *string)
 {
-	char *s = str;
-	int i = 0;
+	char *current_char = string;
+	int length = 0;
 
-	if (!s)
-		s = "(null)";
+	if (!current_char)
+		current_char = "(null)";
 
-	while (s[i])
-		_putchar(s[i++]);
+	while (*current_char)
+	{
+		_putchar(*current_char);
+		length++;
+		current_char++;
+	}
 
-	return (i);
+	return length;
 }
