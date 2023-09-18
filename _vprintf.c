@@ -77,6 +77,9 @@ int check_format(char specifier, va_list args)
 
         case 'X':
             return puthex(va_arg(args, unsigned int), 1);
+	
+	case 'S':
+            return putstring_hexascii(va_arg(args, char *));
 
         default:
             return _putchar('%') + _putchar(specifier);
