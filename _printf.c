@@ -2,50 +2,73 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-
 /**
- * _printf - prints all data types of characters on the standard output
- *		including the format
- * @format: characters to print
- * Return: the length of the format variable
+ * _printf - prints data of various types on the standard output
+ * @format: format string containing the types and characters to print
+ * Return: the length of the formatted output
  */
-
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int len = 0, i = 0, tmp;
-	char next, current, *str, ch;
+	int len = 0;
+	int i = 0;
+	char next;
+	char current;
+	char *str;
+	char ch;
+	int tmp;
 
 	va_start(args, format);
 
 	if (format == NULL)
 		return (-1);
+
 	while (format[i])
 	{
 		current = format[i];
 		next = format[i + 1];
 
-		if (current == '%' && next == 'c')
+		switch (current)
 		{
-			ch = (char)va_arg(args, int);
-			len += _putchar(ch), i++;
+			case '%':
+				i++;
+				switch (next)
+				{
+					case 'c':
+						ch = (char)va_arg(args, int);
+						len += _putchar(ch);
+						break;
+
+					case 's':
+						str = (char *)va_arg(args, char *);
+						len += _putstr(str);
+						break;
+
+					case '%':
+						len += _putchar('%');
+						break;
+
+					case 'd':
+					case 'i':
+						tmp = va_arg(args, int);
+						len += _putint(tmp);
+						break;
+
+					default:
+						len += _putchar(current);
+						len += _putchar(next);
+						break;
+				}
+				break;
+
+			default:
+				len += _putchar(current);
+				break;
 		}
-		else if (current == '%' && next == 's')
-		{
-			str = (char *)va_arg(args, char *);
-			len += _putstr(str), i++;
-		}
-		else if (current == '%' && next == '%')
-			len += _putchar('%'), i++;
-		else if (current == '%' && (next == 'd' || next == 'i'))
-		{
-			tmp = va_arg(args, int);
-			len += _putint(tmp), i++;
-		}
-		else
-			len += _putchar(format[i]);
+
 		i++;
 	}
 	va_end(args);
 	return (len);
 }
+
