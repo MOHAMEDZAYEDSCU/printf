@@ -13,22 +13,38 @@ int vprintf(const char *format, va_list args)
     int i = 0;
     char next;
     char current;
+    int flags;
 
     while (format[i])
     {
         current = format[i];
         next = format[i + 1];
 
-        switch (current)
+        if (current == '%')
         {
-            case '%':
-                i++;
-                len += check_format(next, args);
-                break;
+             i++;
+            flags = 0;
 
-            default:
-                len += _putchar(current);
-                break;
+            while (next == '+' || next == ' ' || next == '#')
+            {
+                if (next == '+')
+                    flags |= 1;
+
+                if (next == ' ')
+                    flags |= 2;
+
+                if (next == '#')
+                    flags |= 4;
+
+                i++;
+                next = format[i + 1];
+            }
+
+            len += check_format(next, args, flags);
+        }
+        else
+        {
+            len += _putchar(current);
         }
         i++;
     }
