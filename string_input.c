@@ -10,13 +10,14 @@
  */
 void _putstr(char *str, int *count)
 {
-    if (str == NULL)
-        _putstr("(null)", count);
-    else
-		while (*str)
-		{
-			_putchar(*str);
-			str++;
-            (*count)++;
-		}
+    char *s = string;
+    int i = 0;
+
+    if (!s)
+        s = "(null)";
+
+    while (s[i])
+        _putchar(s[i++]);
+
+    return (i);
 }
