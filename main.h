@@ -9,6 +9,7 @@
 
 int vprintf(const char *format, va_list args);
 int check_format(char specifier, va_list args);
+int putstring_reversed(char *str);
 int _putchar(char c);
 int  _putint(int n);
 int _putstr(char *str);

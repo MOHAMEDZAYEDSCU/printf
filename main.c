@@ -22,5 +22,8 @@ int main(void)
     _printf("%b\n",98);
 
     _printf("%S\n", "Best\nSchool");
+
+    _printf("%r", "\nThis sentence is retrieved from va_args!");
+
     return (0);
 }
