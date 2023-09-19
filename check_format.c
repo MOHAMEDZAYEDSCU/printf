@@ -37,6 +37,8 @@ int check_format(char specifier, va_list args)
             return (putpointer_address(va_arg(args, void *)));
 	case 'r':
             return putstring_reversed(va_arg(args, char *));
+	case 'R':
+            return putstring_rot13(va_arg(args, char *));
         default:
             return (_putchar('%') + _putchar(specifier));
     }
