@@ -10,13 +10,17 @@
 int main(void)
 {
 
-    _printf("%+d\n", 1024); 
-    printf("%+d\n", 1024); 
+    _printf("%+d\n", 1024);
+    printf("%+d\n", 1024);
 
-    _printf("%+d\n", -1024); 
-    printf("%+d\n", -1024); 
+    _printf("%+d\n", -1024);
+    printf("%+d\n", -1024);
 
-    _printf("%+d\n", 0); 
-    printf("%+d\n", 0); 
+    _printf("%+d\n", 0);
+    printf("%+d\n", 0);
+
+    _printf("%b\n",98);
+
+    _printf("%S\n", "Best\nSchool");
     return (0);
 }

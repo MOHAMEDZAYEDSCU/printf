@@ -7,47 +7,31 @@
  *
  * Return: The length of the formatted output.
  */
- int _vprintf(const char *format, va_list args)
+int vprintf(const char *format, va_list args)
 {
     int len = 0;
     int i = 0;
     char next;
     char current;
-    int flags;
 
     while (format[i])
     {
         current = format[i];
         next = format[i + 1];
 
-        if (current == '%')
+        switch (current)
         {
-            i++;
-            flags = 0;
-
-            while (next == '+' || next == ' ' || next == '#')
-            {
-                if (next == '+')
-                    flags |= 1;
-
-                if (next == ' ')
-                    flags |= 2;
-
-                if (next == '#')
-                    flags |= 4;
-
+            case '%':
                 i++;
-                next = format[i + 1];
-            }
+                len += check_format(next, args);
+                break;
 
-            len += check_format(next, args, flags);
-        }
-        else
-        {
-            len += _putchar(current);
+            default:
+                len += _putchar(current);
+                break;
         }
         i++;
     }
 
-    return len;
+    return (len);
 }

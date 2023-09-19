@@ -1,43 +1,33 @@
 #include "main.h"
 
 /**
- * putstring_hexascii - Replaces special characters with their hex-ASCII values in a string
- * @str: The input string
+ * putstring_hexascii - Prints a string with non-printable characters in hex.
  *
- * Description:
- * This function replaces special characters in the input string with their hex-ASCII
- * values (e.g., newline as \x0A). It prints the modified string on the standard output.
+ * @str: The string to print.
  *
- * Return:
- * The number of characters printed.
+ * Return: The length of the formatted output.
  */
 int putstring_hexascii(char *str)
 {
-    int count = 0;
-    char c;
-    char hex[5];  
-    int i;  
+    int len = 0;
+    int i = 0;
 
     if (!str)
-        str = "(null)";
+        return _putstr("(null)");
 
-    while ((c = *str++))
+    while (str[i])
     {
-        if (c < 32 || c >= 127)
+        if (str[i] < 32 || str[i] >= 127)
         {
-            sprintf(hex, "\\x%02x", c);
-            for (i = 0; hex[i]; i++)
-            {
-                _putchar(hex[i]);
-                count++;
-            }
+            len += _putstr("\\x");
+            len += puthex(str[i], 1);
         }
         else
         {
-            _putchar(c);
-            count++;
+            len += _putchar(str[i]);
         }
+        i++;
     }
 
-    return (count);
+    return len;
 }

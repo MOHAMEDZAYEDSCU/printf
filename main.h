@@ -7,7 +7,8 @@
 #include <string.h>
 #include <unistd.h>
 
-int check_format(char specifier, va_list args, int flags);
+int vprintf(const char *format, va_list args);
+int check_format(char specifier, va_list args);
 int _putchar(char c);
 int  _putint(int n);
 int _putstr(char *str);
@@ -16,7 +17,6 @@ int putoctal(unsigned int n);
 int puthex(unsigned int n, int uppercase);
 int putbin(unsigned int n);
 int _printf(const char *format, ...);
-int _vprintf(const char *format, va_list args);
 int putstring_hexascii(char *str);
 int putpointer_address(void *ptr);
 int handle_plus_flag(int len, int num);

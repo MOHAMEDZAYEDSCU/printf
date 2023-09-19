@@ -8,60 +8,34 @@
  *
  * Return: The length of the formatted output.
  */
- int check_format(char specifier, va_list args, int flags)
+int check_format(char specifier, va_list args)
 {
-    int len = 0;
-    unsigned int tmp;
-
     switch (specifier)
     {
         case 'c':
-            len += _putchar(va_arg(args, int));
-            break;
+            return (_putchar((char) va_arg(args, int)));
         case 's':
-            len += _putstr(va_arg(args, char *));
-            break;
+            return (_putstr(va_arg(args, char *)));
         case '%':
-            len += _putchar('%');
-            break;
+            return (_putchar('%'));
         case 'd':
         case 'i':
-            tmp = va_arg(args, int);
-            if (flags & 1)
-                len = handle_plus_flag(len, tmp);
-            if (flags & 2)
-                len = handle_space_flag(len, tmp);
-            len += _putint(tmp);
-            break;
+            return (_putint(va_arg(args, int)));
         case 'b':
-            len += putbin(va_arg(args, unsigned int));
-            break;
+            return (putbin(va_arg(args, unsigned int)));
         case 'u':
-            len += put_unsign(va_arg(args, unsigned int));
-            break;
+            return (put_unsign(va_arg(args, unsigned int)));
         case 'o':
-            tmp = va_arg(args, unsigned int);
-            if (flags & 4)
-                len = handle_hash_flag(len, specifier, tmp);
-            len += putoctal(tmp);
-            break;
+            return (putoctal(va_arg(args, unsigned int)));
         case 'x':
+            return (puthex(va_arg(args, unsigned int), 0));
         case 'X':
-            tmp = va_arg(args, unsigned int);
-            if (flags & 4)
-                len = handle_hash_flag(len, specifier, tmp);
-            len += puthex(tmp, (specifier == 'X'));
-            break;
+            return (puthex(va_arg(args, unsigned int), 1));
         case 'S':
-            len += putstring_hexascii(va_arg(args, char *));
-            break;
+            return (putstring_hexascii(va_arg(args, char *)));
         case 'p':
-            len += putpointer_address(va_arg(args, void *));
-            break;
+            return (putpointer_address(va_arg(args, void *)));
         default:
-            len += _putchar('%') + _putchar(specifier);
-            break;
+            return (_putchar('%') + _putchar(specifier));
     }
-
-    return len;
 }
