@@ -7,7 +7,7 @@
  *
  * Return: The length of the formatted output.
  */
-int vprintf(const char *format, va_list args)
+ int vprintf(const char *format, va_list args)
 {
     int len = 0;
     int i = 0;
@@ -22,7 +22,7 @@ int vprintf(const char *format, va_list args)
 
         if (current == '%')
         {
-             i++;
+            i++;
             flags = 0;
 
             while (next == '+' || next == ' ' || next == '#')

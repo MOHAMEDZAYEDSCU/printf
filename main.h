@@ -9,6 +9,7 @@
 
 int vprintf(const char *format, va_list args);
 int check_format(char specifier, va_list args, int flags);
+int remove_last_character(char *str);
 int putstring_reversed(char *str);
 int putstring_rot13(char *str);
 int _putchar(char c);

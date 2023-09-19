@@ -11,18 +11,15 @@
 int check_format(char specifier, va_list args, int flags)
 {
     int len = 0;
-    unsigned int tmp;
+    int tmp;
     switch (specifier)
     {
         case 'c':
-            len += _putchar(va_arg(args, int));
-            break;
+            return (_putchar((char) va_arg(args, int)));
         case 's':
-            len += _putstr(va_arg(args, char *));
-            break;
+            return (_putstr(va_arg(args, char *)));
         case '%':
-            len += _putchar('%');
-            break;
+            return (_putchar('%'));
         case 'd':
         case 'i':
             tmp = va_arg(args, int);
@@ -33,11 +30,9 @@ int check_format(char specifier, va_list args, int flags)
             len += _putint(tmp);
             break;
         case 'b':
-            len += putbin(va_arg(args, unsigned int));
-            break;
+            return (putbin(va_arg(args, unsigned int)));
         case 'u':
-            len += put_unsign(va_arg(args, unsigned int));
-            break;
+            return (put_unsign(va_arg(args, unsigned int)));
         case 'o':
             tmp = va_arg(args, unsigned int);
             if (flags & 4)
@@ -52,8 +47,7 @@ int check_format(char specifier, va_list args, int flags)
             len += puthex(tmp, (specifier == 'X'));
             break;
         case 'S':
-            len += putstring_hexascii(va_arg(args, char *));
-            break;
+            return (putstring_hexascii(va_arg(args, char *)));
         case 'p':
             return (putpointer_address(va_arg(args, void *)));
         case 'r':

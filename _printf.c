@@ -10,15 +10,31 @@
 int _printf(const char *format, ...)
 {
     va_list args;
-    int length;
-
-    if (format == NULL || (format[0] == '%' && !format[1]) ||
-        (format[0] == '%' && format[1] == ' ' && !format[2]))
-        return (-1);
+    int length = 0;
+    const char *ptr;
 
     va_start(args, format);
-    length = vprintf(format, args);
+
+    for (ptr = format; *ptr != '\0'; ptr++)
+    {
+        if (*ptr == '%' && ptr[1] == '+')
+        {
+            ptr++;
+            length += handle_plus_flag(0, va_arg(args, int));
+        }
+        else if (*ptr == '%')
+        {
+            length += check_format(ptr[1], args, 0);
+            ptr++;
+        }
+        else
+        {
+            _putchar(*ptr);
+            length++;
+        }
+    }
+
     va_end(args);
 
-    return (length);
+    return length;
 }

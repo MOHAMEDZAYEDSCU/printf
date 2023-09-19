@@ -1,6 +1,27 @@
 #include "main.h"
 
 /**
+ * remove_last_character - Removes the last character from a string
+ * @str: The string from which to remove the last character
+ *
+ * Returns: 0 on success, -1 if the string is NULL or empty
+ */
+int remove_last_character(char *str)
+{
+   
+    int len;
+
+    if (str == NULL || str[0] == '\0')
+        return -1;
+
+    len = strlen(str);
+    if (len > 0)
+        str[len - 1] = '\0';
+
+    return 0;
+}
+
+/**
  * handle_plus_flag - Handles the + flag for non-custom conversion specifiers
  *
  * @len: The current length
@@ -11,8 +32,16 @@
 int handle_plus_flag(int len, int num)
 {
     if (num >= 0)
+    {
         len += _putchar('+');
-    return (len);
+        len += _putint(num);
+    }
+    else
+    {
+        len += _putint(num);
+    }
+
+    return len;
 }
 
 /**
