@@ -1,34 +1,39 @@
 #include "main.h"
 
 /**
- * putstring_hexascii - Prints a string with non-printable characters in hex.
+ * putstring_hexascii - Prints a string, handling non-printable characters.
  *
  * @str: The string to print.
  *
- * Return: The length of the formatted output.
+ * Return: The length of the printed string.
  */
 int putstring_hexascii(char *str)
 {
-    int len = 0;
-    int i = 0;
+    int count = 0;
 
     if (!str)
         return _putstr("(null)");
 
-    while (str[i])
+    while (*str)
     {
-        if (str[i] < 32 || str[i] >= 127)
+        char hex[3];  
+        
+        if (*str > 0 && (*str < 32 || *str >= 127))
         {
-            len += _putchar('\\');
-            len += _putchar('x');
-            len += puthex((unsigned int)str[i], 1);
+            _putchar('\\');
+            _putchar('x');
+            snprintf(hex, sizeof(hex), "%02X", (unsigned char)*str);
+            _putstr(hex);
+            count += 4;  
         }
         else
         {
-            len += _putchar(str[i]);
+            _putchar(*str);
+            count++;
         }
-        i++;
+
+        str++;
     }
 
-    return len;
+    return count;
 }
