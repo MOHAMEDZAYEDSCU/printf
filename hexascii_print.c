@@ -19,8 +19,9 @@ int putstring_hexascii(char *str)
     {
         if (str[i] < 32 || str[i] >= 127)
         {
-            len += _putstr("\\x");
-            len += puthex(str[i], 1);
+            len += _putchar('\\');
+            len += _putchar('x');
+            len += puthex((unsigned int)str[i], 1);
         }
         else
         {
