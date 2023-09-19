@@ -4,11 +4,10 @@
 /**
  * _putstr - Prints a string on the standard output.
  * @string: The string to print.
- * @count: pointer to the counter
  *
  * Return: The length of the string.
  */
-void _putstr(char *str, int *count)
+int _putstr(char *string)
 {
     char *s = string;
     int i = 0;
